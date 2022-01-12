@@ -45,7 +45,7 @@ function weatherSearch () {
     })
 
     .then(function(data){
-        // console.log(data)
+        console.log(data)
         for (var i = 0; i < data.list.length; i+=8){
         var forecastContainer =document.querySelector("#forecastCont")
         var card = document.createElement("div");
@@ -61,7 +61,8 @@ function weatherSearch () {
         var forecastWind = document.createElement('li');
         var forecastHumidity = document.createElement('li');
 
-        forecastDay.textContent = "The weather for " + moment().format('dddd') + " in " + data.city.name;
+        forecastDay.textContent = "For " + data.list[i].clouds.dt_txt;
+        // "The weather for " + moment().format('dddd') + " in " + data.city.name;
         forecastTemp.textContent = "The temp for this day is " + data.list[i].main.temp;
         forecastWind.textContent= "Winds will be blowing at " + data.list[i].wind.speed;
         forecastHumidity.textContent= "Humidity is expected to be at " + data.list[i].main.humidity + "%";
