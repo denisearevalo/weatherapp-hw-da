@@ -46,9 +46,11 @@ function weatherSearch () {
 
     .then(function(data){
         console.log(data)
-        // for (let i = 0; i < data.list.length; i+=8){
+        for (var i = 0; i < data.list.length; i+=8){
+        var tag = document.createElement(searchInputValue)
+
         var forecastDay = document.querySelector("#forecastDate");
-        var forecastIcon = data.list[7].weather[0].icon;
+        var forecastIcon = data.list[i].weather[0].icon;
         var iconUrl = "<img src ='http://openweathermap.org/img/wn/" + forecastIcon + ".png' alt='Icon depicting current weather.'>";
         document.querySelector("#forecastIcon").innerHTML =iconUrl
         var forecastTemp = document.querySelector("#forecastTemperature");
@@ -59,7 +61,9 @@ function weatherSearch () {
         forecastTemp.textContent = "The temp for this day is " + data.list[i].main.temp;
         forecastWind.textContent= "Winds will be blowing at " + data.list[i].wind.speed;
         forecastHumidity.textContent= "Humidity is expected to be at " + data.list[i].main.humidity + "%";
-        
+        document.body.append(tag);
+    } 
+
     });
 }
 searchBtn.addEventListener("click", weatherSearch)
