@@ -45,23 +45,34 @@ function weatherSearch () {
     })
 
     .then(function(data){
-        console.log(data)
+        // console.log(data)
         for (var i = 0; i < data.list.length; i+=8){
-        var tag = document.createElement(searchInputValue)
+        var forecastContainer =document.querySelector("#forecastCont")
+        var card = document.createElement("div");
+        card.setAttribute("style","width:16rem")
+        card.setAttribute("class", "card forecast" )
 
-        var forecastDay = document.querySelector("#forecastDate");
+        var ul = document.createElement('ul')
+        var forecastDay = document.createElement('li');
         var forecastIcon = data.list[i].weather[0].icon;
         var iconUrl = "<img src ='http://openweathermap.org/img/wn/" + forecastIcon + ".png' alt='Icon depicting current weather.'>";
-        document.querySelector("#forecastIcon").innerHTML =iconUrl
-        var forecastTemp = document.querySelector("#forecastTemperature");
-        var forecastWind = document.querySelector("#forecastWinds");
-        var forecastHumidity = document.querySelector("#forecastHumidity");
+        document.createElement('li').innerHTML =iconUrl
+        var forecastTemp = document.createElement('li');
+        var forecastWind = document.createElement('li');
+        var forecastHumidity = document.createElement('li');
 
         forecastDay.textContent = "The weather for " + moment().format('dddd') + " in " + data.city.name;
         forecastTemp.textContent = "The temp for this day is " + data.list[i].main.temp;
         forecastWind.textContent= "Winds will be blowing at " + data.list[i].wind.speed;
         forecastHumidity.textContent= "Humidity is expected to be at " + data.list[i].main.humidity + "%";
-        document.body.append(tag);
+        
+       ul.append(forecastDay);
+       ul.append(forecastIcon);
+       ul.append(forecastTemp);
+       ul.append(forecastWind);
+       ul.append(forecastHumidity);
+       card.append(ul);
+       forecastContainer.append(card)
     } 
 
     });

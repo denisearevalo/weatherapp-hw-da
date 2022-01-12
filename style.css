@@ -16,7 +16,7 @@ ul{
     background-color: rgb(180, 174, 184);
     padding: 10px;
 }
-#forecast{
+.forecast{
     background-color: rgb(168, 145, 168);
 }
 footer{
