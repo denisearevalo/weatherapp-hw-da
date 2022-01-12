@@ -1,3 +1,4 @@
+![App](https://user-images.githubusercontent.com/93785378/149067164-5105415f-86da-4f0c-bdca-d6e485cdc821.PNG)
 # weatherapp-hw-da
 User will open webpage. The user can enter the city of their choosing to generate 
 the date, weather icon, current temperature, what the day feels like, humidity, and
